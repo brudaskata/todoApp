@@ -1,0 +1,78 @@
+h1 {
+    text-align: center;
+}
+
+li {
+    border: 5px solid  rgb(66, 121, 146);;
+    padding: 10px;
+    margin: 5px;
+    list-style-type: none;
+}
+
+li:hover {
+    background-color: lightgrey;
+    font-size: 120%;
+}
+
+button {
+    padding: 5px;
+    margin: 5px;
+    border-style: outset;
+    border-color:darkcyan;
+    cursor: pointer;
+}
+
+#search {
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+#search label {
+    margin: 5px;
+}
+
+#create{
+    display: flex;
+    justify-content: center;
+}
+
+#backTocreate{
+    background-color:rgb(140, 224, 196);
+}
+
+#deleteAll{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#delete {
+   margin-right: 50px;
+    background-color: rgb(236, 77, 77);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#edit {
+    background-color: rgb(141, 204, 141);
+    cursor: pointer;
+}
+
+#filter{
+    margin-left: 40px;
+}
+
+#nomatch{
+    font-size: larger;
+    text-align: center;
+}
+
+#topButton{
+    display: flex;
+    justify-content: flex-end; 
+}
+
+#createDelete{
+    display: flex;
+    justify-content: space-evenly;
+}

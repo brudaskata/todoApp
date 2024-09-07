@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: aquamarine;
+    margin-top: 10px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    margin-right: 35px;
+    border-radius: 15px;
+    padding: 6px;
+}
+
+button:disabled {
+    background-color: grey; 
+    color: black;        
+    cursor: not-allowed;    
+    opacity: 0.6;           
+}
+
+.toggleMode{
+    font-size: smaller;
+}

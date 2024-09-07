@@ -1,0 +1,49 @@
+<form [formGroup]="formTodo" class="newTodo">
+
+    <h1>Create new todo item</h1>
+    <div class="form-group">
+        <label>Title</label>
+        <input formControlName="title" type="text">
+    </div>
+
+
+    <div class="form-group">
+        <label>Description</label>
+        <input formControlName="description" type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Due date</label>
+        <input formControlName="dueDate" type="date">
+    </div>
+
+    <div class="form-group">
+        <label>Priority</label>
+        <select formControlName="priority" type="string">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status" type="string">
+            <option>not started yet</option>
+            <option>in progress</option>
+            <option>done</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea formControlName="notes"></textarea>
+    </div>
+
+    <button (click)="createTodo()" type="button" class="button">Create new todo</button>
+
+</form>
+
+<div id="backbutton">
+    <button (click)="navigateMain()" type="button" class="button">Back to main</button>
+</div>

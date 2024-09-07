@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.createTodo {
+    width: auto;
+    height: auto;
+    text-align: center;
+    border: 2px solid salmon;
+    border-radius: 10px;
+    background-color: rgb(66, 121, 146);
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+label {
+    width: 120px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    font-size: larger;
+    margin-right: 15px;
+}
+
+button {
+    border-radius: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: aquamarine;
+    color: black;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}

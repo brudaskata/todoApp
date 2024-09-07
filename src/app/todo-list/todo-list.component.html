@@ -1,0 +1,74 @@
+<h1>My Todos</h1>
+
+<div id="search" *ngIf="!inFilterMode">
+    <label for="search" style="font-weight: bold;">Search todo:</label>
+    <input type="search" [(ngModel)]="searchTerm" name="searchTerm" (keyup.enter)="searchTodo()">
+    <input type="submit" value="Search" (click)="searchTodo()">
+</div>
+
+<div id="search" *ngIf="inFilterMode && !noMatch">
+    <label for="search" style="font-weight: bold;">Search todo in filtered list:</label>
+    <input type="search" [(ngModel)]="searchTerm" name="searchTerm" (keyup.enter)="searchTodo()">
+    <input type="submit" value="Search" (click)="searchTodo()">
+</div>
+
+<div id="filter" *ngIf="!inSearchMode || inSearchMode && !noMatch || inFilterMode && noMatch">
+    <span style="font-weight: bold;">Filter by status:</span><br>
+    <label for="notYet">Not started yet</label>
+    <input type="checkbox" id="notYet" [checked]="checkboxStates.notYet"
+        (change)="onCheckboxChange($event, 'notYet')"><br>
+    <label for="progress">In progress</label>
+    <input type="checkbox" id="progress" [checked]="checkboxStates.progress"
+        (change)="onCheckboxChange($event, 'progress')"><br>
+    <label for="done">Done</label>
+    <input type="checkbox" id="done" [checked]="checkboxStates.done" (change)="onCheckboxChange($event, 'done')"><br>
+</div>
+
+<div id="createDelete">
+    <div id="create">
+        <button type="button" (click)="navigateCreate()" id="backTocreate">Create new todo</button>
+    </div>
+    <div id="deleteAll" [ngStyle]="{'visibility': inSearchMode || inFilterMode ? 'hidden' : 'visible'}">
+        <button type="button" (click)="deleteAllTodos()" id="delete">Delete All Todos</button>
+    </div>
+</div>
+
+<p *ngIf="error">An error occured during loading posts!</p>
+
+<p id="nomatch" *ngIf=" inSearchMode && noMatch || inFilterMode && noMatch">Sorry, there is no matching todo found!
+    &#9785;&#65039;</p>
+
+
+
+<div *ngIf="inSearchMode && !inFilterMode" style="text-align: center;">
+    <button type="button" (click)="clearSearch()">Back to the list</button>
+</div>
+
+<div *ngIf="inSearchMode && inFilterMode" style="text-align: center;">
+    <button type="button" (click)="clearSearch()">Back to the filtered list</button>
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let todo of todos">
+            <ul>Title: {{todo.title}}</ul>
+            <ul>Description: {{todo.description}}</ul>
+            <ul>Due Date: {{todo.dueDate}}</ul>
+            <ul>Priority: {{todo.priority}}</ul>
+            <ul>Status: {{todo.status}}</ul>
+            <ul>Notes: {{todo.notes}}</ul>
+            <ul *ngIf="todo.isOverDue" style="color: red;">This todo's due date has already expired!</ul>
+
+            <div class="form-group">
+                <button type="button" id="delete" (click)="deleteTodo(todo.firebaseId)">Delete todo</button>
+                <button type="button" id="edit" (click)="navigateToEdit(todo.firebaseId)">Edit todo</button>
+                <button type="button" id="markAsDone">Mark as done</button>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div id="topButton">
+    <button (click)="scrollToTop()">Back to top</button>
+</div>
