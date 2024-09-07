@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LogoutService } from '../logout.service';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
+import { filter } from 'rxjs';
+import { NavigationEnd } from '@angular/router';
+
 
 
 @Component({
@@ -17,13 +20,21 @@ export class TodoStartComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService, private logoutService: LogoutService) { }
 
   ngOnInit(): void {
-    this.subscription = this.logoutService.logOutCompleted$.subscribe(() => {
-//      setTimeout(function(){
-  //      alert('You are logged out');
+    const navigationObs$ = this.router.events.pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd));
+    const logoutCompleteObs$ = this.logoutService.logOutCompleted$;
+   navigationObs$.pipe(switchMap(e =>{
+    return logoutCompleteObs$;
+   })).subscribe(()=> {
+    alert("You are logged out");
+   })
+    
+    
+    //      setTimeout(function(){
+    //      alert('You are logged out');
     //}, 1000);
 
-      alert("You are logged out!");
-    });
+   
+
   }
 
   public navigateCreate() {
@@ -37,8 +48,8 @@ export class TodoStartComponent implements OnInit {
     this.router.navigate(['todoList']);
   }
 
- 
 
- 
+
+
 
 }
