@@ -161,6 +161,8 @@ export class TodoListComponent implements OnInit {
 
         this.noMatch = false;
         this.inSearchMode = false;
+
+        
     }
 
     public navigateToEdit(firebaseId: any): void {
